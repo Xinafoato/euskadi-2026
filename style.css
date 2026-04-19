@@ -1,0 +1,337 @@
+/* Variables de tema y diseño moderno */
+:root {
+    font-size: 18px;
+    --primary-color: #1a5c40;
+    --secondary-color: #2b8c63;
+    --accent-color: #3b82f6;
+    --bg-color: #f8fafc;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --white: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
+
+    --font-sans: 'Inter', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Tipografía */
+h1, h2, h3 {
+    font-family: var(--font-serif);
+    color: var(--text-main);
+}
+
+h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 2rem; }
+h2 { font-size: 3rem; margin-bottom: 1.5rem; }
+h3 { font-size: 2rem; margin-bottom: 1rem; }
+
+a { color: var(--accent-color); text-decoration: none; transition: all 0.3s ease; }
+a:hover { color: var(--primary-color); }
+
+.container {
+    max-width: 1400px;
+    width: 95%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.text-center { text-align: center; }
+.mb-5 { margin-bottom: 4rem; }
+.mt-2 { margin-top: 1rem; }
+.section { padding: 8rem 0; }
+.section-desc { max-width: 800px; margin: 0 auto 3rem; color: var(--text-muted); font-size: 1.2rem; }
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4rem;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+}
+
+.logo { font-family: var(--font-serif); font-weight: 700; font-size: 2rem; color: var(--primary-color); }
+.nav-links { display: flex; gap: 3rem; }
+.nav-links a { color: var(--text-main); font-weight: 700; font-size: 1.2rem; }
+
+/* Hero */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+    transform: scale(1.05);
+    animation: slowZoom 20s infinite alternate;
+}
+
+@keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.1); } }
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+    z-index: -1;
+}
+
+.hero-content { text-align: center; color: var(--white); max-width: 900px; }
+.hero-content h1 { font-size: 5rem; color: var(--white); text-shadow: 0 4px 15px rgba(0,0,0,0.4); }
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--white);
+    color: var(--text-main);
+    padding: 1.2rem 3rem;
+    border-radius: 80px;
+    font-weight: 800;
+    font-size: 1.4rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+#interactive-map {
+    height: 600px;
+    width: 100%;
+    margin-top: 2rem;
+    border-radius: 30px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(43, 140, 99, 0.1);
+    color: var(--primary-color);
+    padding: 0.6rem 1.5rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+/* ==========================================
+   DISEÑO DE CARRUSEL HORIZONTAL (VERSÍON GIGANTE)
+   ========================================== */
+
+.rutas-container {
+    position: relative;
+    padding: 1rem 0;
+}
+
+.rutas-slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 3rem;
+    padding: 2rem 2rem 5rem 2rem;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.rutas-slider::-webkit-scrollbar { display: none; }
+
+.ruta-card {
+    flex: 0 0 calc(90% - 2rem);
+    max-width: 1100px; /* Tarjetas mucho más grandes */
+    height: 700px;    /* Altura incrementada */
+    background-size: cover;
+    background-position: center;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    scroll-snap-align: center;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.15);
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.6s ease;
+}
+
+.ruta-card:hover {
+    transform: translateY(-15px) scale(1.01);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.25);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, 
+        rgba(0,0,0,0.1) 0%, 
+        rgba(0,0,0,0.2) 40%, 
+        rgba(0,0,0,0.85) 100%);
+    z-index: 1;
+}
+
+.card-top, .card-center, .card-bottom {
+    position: absolute;
+    left: 4rem;
+    right: 4rem;
+    z-index: 2;
+    color: var(--white);
+}
+
+.card-top {
+    top: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.day-tag {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: var(--primary-color);
+    padding: 0.8rem 1.8rem;
+    border-radius: 15px;
+    font-size: 1.1rem;
+}
+
+.date-tag { font-size: 1.5rem; opacity: 0.9; font-weight: 500; }
+
+.card-center {
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.card-center h3 {
+    font-size: 5.5rem; /* Título cinematográfico */
+    color: var(--white) !important;
+    text-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    margin: 0;
+    line-height: 1.1;
+}
+
+.card-bottom {
+    bottom: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.card-stats {
+    display: flex;
+    gap: 3rem;
+}
+
+.card-stats span {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.card-stats i { width: 28px; height: 28px; }
+
+.btn-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: var(--white);
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.btn-card:hover {
+    background: var(--white);
+    color: var(--primary-color);
+    transform: translateX(10px);
+}
+
+/* Navegación Desktop */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--white);
+    border: none;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.rutas-container:hover .nav-btn { opacity: 1; }
+.prev-btn { left: -35px; }
+.next-btn { right: -35px; }
+
+.nav-btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Campings */
+.campings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+}
+
+.camping-card { border-radius: 40px; overflow: hidden; }
+.camping-card img { width: 100%; height: 350px; object-fit: cover; }
+
+/* Footer */
+.footer { background: var(--text-main); color: var(--white); padding: 5rem 0; margin-top: 5rem; }
+.footer h3 { color: var(--white); }
+.footer p { color: #94a3b8; }
+
+/* Responsive */
+@media (max-width: 1400px) {
+    .ruta-card { flex: 0 0 calc(92% - 1rem); height: 600px; }
+    .card-center h3 { font-size: 4rem; }
+}
+
+@media (max-width: 768px) {
+    .ruta-card { flex: 0 0 90%; height: 450px; }
+    .card-center h3 { font-size: 2.5rem; }
+    .card-top, .card-bottom { left: 2rem; right: 2rem; }
+    .card-stats { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+    .card-stats span { font-size: 1.1rem; }
+    .nav-btn { display: none; }
+    .navbar { padding: 0 1.5rem; }
+}

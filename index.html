@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruta per Euskadi 2026 - Aventura a la Costa Basca</title>
+    <meta name="description"
+        content="Ruta interactiva de trekking per la Costa Basca any 2026. Zumaia, Lekeitio, Gaztelugatxe i més.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+        rel="stylesheet">
+    <!-- Leaflet CSS per a Mapes Interactius -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">Euskadi 2026</div>
+        <div class="nav-links">
+            <a href="#hero">Inici</a>
+            <a href="#mapa">Mapa</a>
+            <a href="#rutas">Rutes</a>
+            <a href="#campings">Càmpings</a>
+        </div>
+    </nav>
+
+    <header id="hero" class="hero-section">
+        <!-- Imatge de Zumaia flysch -->
+        <div class="hero-bg" style="background-image: url('img/zumaia.png');"></div>
+        <div class="hero-content">
+            <h1 class="animate-up">Ruta per Euskadi 2026</h1>
+            <a href="#mapa" class="btn-primary animate-up delay-2">Descobrir el Viatge <i
+                    data-lucide="arrow-down"></i></a>
+        </div>
+    </header>
+
+    <section id="mapa" class="section">
+        <div class="container text-center">
+            <span class="badge">La Nostra Ruta Interactiva</span>
+            <h2>El Recorregut Complet</h2>
+            <p class="section-desc">Explora el mapa real de la nostra aventura. Fes clic a les etapes per veure els
+                enllaços a les rutes detallades.</p>
+
+            <div id="interactive-map"></div>
+        </div>
+    </section>
+
+    <section id="rutas" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge">Les Etapes</span>
+                <h2>Explora cada ruta</h2>
+                <p class="section-desc">Fes scroll lateral per descobrir els detalls de la nostra aventura.</p>
+            </div>
+
+            <div class="rutas-container">
+                <div class="rutas-slider">
+                    
+                    <!-- Etapa 1 -->
+                    <div class="ruta-card" style="background-image: url('img/zumaia.png');">
+                        <div class="card-overlay"></div>
+                        <div class="card-top">
+                            <span class="day-tag">Dia 1</span>
+                            <span class="date-tag">20/07</span>
+                        </div>
+                        <div class="card-center">
+                            <h3>Zumaia → Itxaspe</h3>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="card-stats">
+                                <span><i data-lucide="ruler"></i> 19.4 km</span>
+                                <span><i data-lucide="trending-up"></i> +699m / <i data-lucide="trending-down"></i> -591m</span>
+                                <span><i data-lucide="clock"></i> 6:15h</span>
+                            </div>
+                            <a href="https://www.outdooractive.com/mobile/es/route/ruta-de-senderismo/guipuzcoa/euskadi-idea-etapa-0/338616413/?share=%7E34lw3ute%244osswvs3" target="_blank" class="btn-card">Veure ruta</a>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 2 -->
+                    <div class="ruta-card" style="background-image: url('img/itxaspe.png');">
+                        <div class="card-overlay"></div>
+                        <div class="card-top">
+                            <span class="day-tag">Dia 2</span>
+                            <span class="date-tag">21/07</span>
+                        </div>
+                        <div class="card-center">
+                            <h3>Itxaspe → Lekeitio</h3>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="card-stats">
+                                <span><i data-lucide="ruler"></i> 23.3 km</span>
+                                <span><i data-lucide="trending-up"></i> +851m / <i data-lucide="trending-down"></i> -830m</span>
+                                <span><i data-lucide="clock"></i> 7:40h</span>
+                            </div>
+                            <a href="https://www.outdooractive.com/mobile/es/route/ruta-de-senderismo/guipuzcoa/euskadi-idea-etapa-1/338610832/?share=%7E34lvp7ix%244osswvzh" target="_blank" class="btn-card">Veure ruta</a>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 3 -->
+                    <div class="ruta-card" style="background-image: url('img/laida.png');">
+                        <div class="card-overlay"></div>
+                        <div class="card-top">
+                            <span class="day-tag">Dia 3</span>
+                            <span class="date-tag">22/07</span>
+                        </div>
+                        <div class="card-center">
+                            <h3>Lekeitio → Laida</h3>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="card-stats">
+                                <span><i data-lucide="ruler"></i> 25.2 km</span>
+                                <span><i data-lucide="trending-up"></i> +608m / <i data-lucide="trending-down"></i> -776m</span>
+                                <span><i data-lucide="clock"></i> 7:35h</span>
+                            </div>
+                            <a href="https://www.outdooractive.com/mobile/es/route/ruta-de-senderismo/vizcaya/euskadi-idea-etapa-2b/338610934/?share=%7E34lvppex%244osswvzh" target="_blank" class="btn-card">Veure ruta</a>
+                        </div>
+                    </div>
+
+                    <!-- Excursió -->
+                    <div class="ruta-card" style="background-image: url('img/san_juan.png');">
+                        <div class="card-overlay"></div>
+                        <div class="card-top">
+                            <span class="day-tag">Dia 4</span>
+                            <span class="date-tag">23/07</span>
+                        </div>
+                        <div class="card-center">
+                            <h3>S. J. Gaztelugatxe</h3>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="card-stats">
+                                <span><i data-lucide="ruler"></i> 21.7 km</span>
+                                <span><i data-lucide="trending-up"></i> +844m / <i data-lucide="trending-down"></i> -864m</span>
+                                <span><i data-lucide="clock"></i> 7:15h</span>
+                            </div>
+                            <a href="https://www.outdooractive.com/mobile/es/route/ruta-de-senderismo/vizcaya/euskadi-idea-excu-etapa-3/338610949/?share=%7E34lvpw7h%244osswvzh" target="_blank" class="btn-card">Veure ruta</a>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 4 -->
+                    <div class="ruta-card" style="background-image: url('img/gorliz.png');">
+                        <div class="card-overlay"></div>
+                        <div class="card-top">
+                            <span class="day-tag">Dia 5</span>
+                            <span class="date-tag">24/07</span>
+                        </div>
+                        <div class="card-center">
+                            <h3>Portuondo → Mungia</h3>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="card-stats">
+                                <span><i data-lucide="ruler"></i> 20.2 km</span>
+                                <span><i data-lucide="trending-up"></i> +839m / <i data-lucide="trending-down"></i> -828m</span>
+                                <span><i data-lucide="clock"></i> 6:35h</span>
+                            </div>
+                            <a href="https://www.outdooractive.com/es/route/ruta-de-senderismo/vizcaya/euskadi-ruta-5/339050674/?share=%7E34pyirpa%244osszxvb" target="_blank" class="btn-card">Veure ruta</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Resum Total -->
+                    <div class="ruta-card total-card" style="background-image: url('img/zumaia.png');">
+                        <div class="card-overlay" style="background: linear-gradient(rgba(26, 92, 64, 0.85), rgba(26, 92, 64, 0.95));"></div>
+                        <div class="card-center">
+                            <span class="day-tag" style="margin-bottom: 1rem;">La Gran Aventura</span>
+                            <h3>Resum Final</h3>
+                            <div class="card-stats" style="justify-content: center; margin-top: 2rem;">
+                                <span><i data-lucide="ruler"></i> 109.8 km</span>
+                                <span><i data-lucide="trending-up"></i> +3841m / <i data-lucide="trending-down"></i> -3889m</span>
+                            </div>
+                            <p style="margin-top: 1.5rem; opacity: 0.8;">110 km recorrent el millor de la costa basca!</p>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Botons de Navegació Desktop -->
+                <button class="nav-btn prev-btn"><i data-lucide="chevron-left"></i></button>
+                <button class="nav-btn next-btn"><i data-lucide="chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section id="campings" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge">Allotjament</span>
+                <h2>Els Nostres Càmpings</h2>
+                <p class="section-desc">On descansarem després de cada jornada en ruta.</p>
+            </div>
+
+            <div class="campings-grid">
+                <!-- Camping Zumaia -->
+                <div class="camping-card glass-card">
+                    <img src="img/camping_zumaia.jpg" alt="Camping Zumaia">
+                    <div class="p-4">
+                        <h3>Camping Zumaia</h3>
+                        <p>Situat en un entorn privilegiat a prop del Flysch.</p>
+                        <a href="https://www.campingzumaia.com/" target="_blank" class="btn-outline mt-2">Web
+                            Oficial</a>
+                    </div>
+                </div>
+
+                <!-- Camping Itxaspe -->
+                <div class="camping-card glass-card">
+                    <img src="img/camping_itxaspe.jpg" alt="Camping Itxaspe">
+                    <div class="p-4">
+                        <h3>Camping Itxaspe</h3>
+                        <p>Vistes espectaculars al mar i penya-segats.</p>
+                        <a href="https://www.campingred.es/Itxaspe/" target="_blank" class="btn-outline mt-2">Web
+                            Oficial</a>
+                    </div>
+                </div>
+
+                <!-- Camping Leagi -->
+                <div class="camping-card glass-card">
+                    <img src="img/camping_leagi.jpg" alt="Camping Leagi">
+                    <div class="p-4">
+                        <h3>Camping Leagi</h3>
+                        <p>Dominant la desembocadura de la ria de Lekeitio.</p>
+                        <a href="https://www.campingleagi.com/" target="_blank" class="btn-outline mt-2">Web Oficial</a>
+                    </div>
+                </div>
+
+                <!-- Camping Portuondo -->
+                <div class="camping-card glass-card">
+                    <img src="img/camping_portuondo.jpg" alt="Camping Portuondo">
+                    <div class="p-4">
+                        <h3>Camping Portuondo</h3>
+                        <p>En plena Reserva de la Biosfera d'Urdaibai.</p>
+                        <a href="https://www.campingportuondo.com/" target="_blank" class="btn-outline mt-2">Web
+                            Oficial</a>
+                    </div>
+                </div>
+
+                <!-- Camping Gorliz -->
+                <div class="camping-card glass-card">
+                    <img src="img/camping_gorliz.webp" alt="Camping Gorliz">
+                    <div class="p-4">
+                        <h3>Camping Gorliz</h3>
+                        <p>A un pas de la platja de Gorliz i Plentzia.</p>
+                        <a href="https://campinggorliz.com/" target="_blank" class="btn-outline mt-2">Web Oficial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <h3>Ruta Euskadi 2026</h3>
+            <p>Preparats per a l'aventura.</p>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS & Plugin GPX -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
