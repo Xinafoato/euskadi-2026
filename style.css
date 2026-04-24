@@ -166,8 +166,8 @@ a:hover { color: var(--primary-color); }
 
 .ruta-card {
     flex: 0 0 calc(90% - 2rem);
-    max-width: 1100px; /* Tarjetas mucho más grandes */
-    height: 700px;    /* Altura incrementada */
+    max-width: 1100px;
+    height: 750px;    /* Un poco más de altura para el perfil */
     background-size: cover;
     background-position: center;
     border-radius: 50px;
@@ -176,6 +176,12 @@ a:hover { color: var(--primary-color); }
     scroll-snap-align: center;
     box-shadow: 0 30px 70px rgba(0,0,0,0.15);
     transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.6s ease;
+    
+    /* Nuevo: Layout flex para evitar solapamientos */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3.5rem 4rem;
 }
 
 .ruta-card:hover {
@@ -187,22 +193,20 @@ a:hover { color: var(--primary-color); }
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     background: linear-gradient(to bottom, 
-        rgba(0,0,0,0.1) 0%, 
-        rgba(0,0,0,0.2) 40%, 
-        rgba(0,0,0,0.85) 100%);
+        rgba(0,0,0,0.2) 0%, 
+        rgba(0,0,0,0.3) 40%, 
+        rgba(0,0,0,0.9) 100%);
     z-index: 1;
 }
 
 .card-top, .card-center, .card-bottom {
-    position: absolute;
-    left: 4rem;
-    right: 4rem;
+    position: relative; /* Cambiado de absolute */
     z-index: 2;
     color: var(--white);
+    width: 100%;
 }
 
 .card-top {
-    top: 3.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -221,25 +225,46 @@ a:hover { color: var(--primary-color); }
 .date-tag { font-size: 1.5rem; opacity: 0.9; font-weight: 500; }
 
 .card-center {
-    top: 50%;
-    transform: translateY(-50%);
     text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
 }
 
 .card-center h3 {
-    font-size: 5.5rem; /* Título cinematográfico */
+    font-size: clamp(2.5rem, 5vw, 5.5rem); /* Tamaño dinámico */
     color: var(--white) !important;
     text-shadow: 0 10px 40px rgba(0,0,0,0.6);
     margin: 0;
     line-height: 1.1;
 }
 
+/* Estilos para el Perfil de Elevación */
+.elevation-profile {
+    width: 100%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.elevation-profile img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: contrast(1.1); /* Mejorar visibilidad */
+}
+
 .card-bottom {
-    bottom: 3.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    margin-top: auto;
 }
 
 .card-stats {
@@ -293,11 +318,10 @@ a:hover { color: var(--primary-color); }
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
-    opacity: 0;
+    transition: all 0.3s ease, opacity 0.3s ease;
+    color: var(--primary-color);
 }
 
-.rutas-container:hover .nav-btn { opacity: 1; }
 .prev-btn { left: -35px; }
 .next-btn { right: -35px; }
 
@@ -329,9 +353,14 @@ a:hover { color: var(--primary-color); }
 }
 
 @media (max-width: 768px) {
-    .ruta-card { flex: 0 0 90%; height: 450px; }
+    .ruta-card { 
+        flex: 0 0 90%; 
+        height: auto; 
+        min-height: 500px;
+        padding: 2rem;
+    }
     .card-center h3 { font-size: 2.5rem; }
-    .card-top, .card-bottom { left: 2rem; right: 2rem; }
+    .elevation-profile { padding: 0.5rem; }
     .card-stats { flex-direction: column; gap: 0.5rem; align-items: center; }
     .card-stats span { font-size: 1.1rem; }
     .nav-btn { display: none; }

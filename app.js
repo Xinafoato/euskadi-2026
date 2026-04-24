@@ -124,4 +124,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     }
+
+    // Lógica para el Slider de Rutes
+    const slider = document.querySelector('.rutas-slider');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    if (slider && prevBtn && nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            const cardWidth = slider.querySelector('.ruta-card').offsetWidth + 48; // card + gap
+            slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            const cardWidth = slider.querySelector('.ruta-card').offsetWidth + 48; // card + gap
+            slider.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        });
+
+        // Opcional: Ocultar flechas si no hay más scroll
+        slider.addEventListener('scroll', () => {
+            const scrollLeft = slider.scrollLeft;
+            const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+            prevBtn.style.opacity = scrollLeft <= 10 ? '0' : '1';
+            prevBtn.style.pointerEvents = scrollLeft <= 10 ? 'none' : 'auto';
+
+            nextBtn.style.opacity = scrollLeft >= maxScroll - 10 ? '0' : '1';
+            nextBtn.style.pointerEvents = scrollLeft >= maxScroll - 10 ? 'none' : 'auto';
+        });
+
+        // Disparar evento inicial para ocultar prevBtn
+        slider.dispatchEvent(new Event('scroll'));
+    }
 });
